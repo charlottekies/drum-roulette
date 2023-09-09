@@ -34,6 +34,9 @@ jobs:
 
       - name: Change working directory to 'client'
         run: cd client  # Change to the 'client' directory
+
+      - name: Install Project Dependencies
+        run: /usr/local/bin/yarn install
         
       - name: Build with Next.js
         run: yarn next build
