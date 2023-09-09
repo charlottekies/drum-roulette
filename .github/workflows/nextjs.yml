@@ -28,6 +28,13 @@ jobs:
 
       # Other steps (Checkout, Change working directory, Setup Node.js and Yarn, Install Project Dependencies) go here.
 
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Change working directory to 'client'
+        run: cd client  # Change to the 'client' directory
+        
       - name: Build with Next.js
         run: yarn next build
 
