@@ -39,7 +39,8 @@ jobs:
           node-version: 14  # Use a Node.js version that suits your project
 
       - name: Install Yarn
-        run: npm install -g yarn
+        run: npm install -g yarn@1.22.19  # Specify the Yarn version you want to use
+
 
       - name: Install Project Dependencies with Yarn
         run: yarn install --frozen-lockfile
