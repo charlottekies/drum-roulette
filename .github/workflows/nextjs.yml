@@ -36,7 +36,12 @@ jobs:
         run: cd client  # Change to the 'client' directory
 
       - name: Install Project Dependencies
-        run: /usr/local/bin/yarn install
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
         
       - name: Build with Next.js
         run: yarn next build
