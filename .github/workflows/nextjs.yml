@@ -7,7 +7,8 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["develop"]
+    branches:
+      - develop  # Adjust the branch name as needed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,32 +27,32 @@ jobs:
           restore-keys: | 
             ${{ runner.os }}-nextjs-
 
-      # Other steps (Checkout, Change working directory, Setup Node.js and Yarn, Install Project Dependencies) go here.
-
-
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Change working directory to 'client'
         run: cd client  # Change to the 'client' directory
 
-      - name: Install Project Dependencies
-      - uses: actions/setup-node@v1
+      - name: Set up Node.js and Yarn
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
-      - run: npm install -g yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-        
-      - name: Build with Next.js
-        run: yarn next build
+          node-version: 14  # Use a Node.js version that suits your project
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Project Dependencies with Yarn
+        run: yarn install --frozen-lockfile
+
+      - name: Build Project
+        run: yarn build
 
       - name: Static HTML export with Next.js
         run: yarn next export -o ../out
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Update the path to point to the 'out' directory
-          path: ../out
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
