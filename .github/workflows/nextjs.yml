@@ -17,20 +17,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Change working directory to 'client'
-        run: cd client
-
-      - name: Setup Node.js and Yarn
-        uses: actions/setup-node@v2
+      - name: Cache .next folder
+        uses: actions/cache@v2
         with:
-          node-version: "16"
-          yarn-version: "1.22.19"
+          path: client/.next
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('client/.next', 'client/package-lock.json', 'client/yarn.lock') }}
+          restore-keys: | 
+            ${{ runner.os }}-nextjs-
 
-      - name: Install Project Dependencies
-        run: yarn install
+      # Other steps (Checkout, Change working directory, Setup Node.js and Yarn, Install Project Dependencies) go here.
 
       - name: Build with Next.js
         run: yarn next build
