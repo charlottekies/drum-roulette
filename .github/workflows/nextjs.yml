@@ -39,20 +39,20 @@ jobs:
           node-version: 14  # Use a Node.js version that suits your project
 
       - name: Install Yarn
-        run: npm install -g yarn  # Specify the Yarn version you want to use
+        run: cd client && npm install -g yarn  # Specify the Yarn version you want to use
 
 
       - name: Install Project Dependencies with Yarn
-        run: yarn install --frozen-lockfile
+        run: cd client && yarn install --frozen-lockfile
 
       - name: Debug package.json
         run: cat client/package.json
 
       - name: Build Project
-        run: yarn build
+        run: cd client && yarn build
 
       - name: Static HTML export with Next.js
-        run: yarn next export -o ../out
+        run: cd client && yarn next export -o ../out
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
