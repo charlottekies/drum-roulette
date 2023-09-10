@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 
-const baseUrl = publicRuntimeConfig.baseUrl;
+const baseUrl = publicRuntimeConfig.basePath;
 
 export default function Assignments() {
   return (

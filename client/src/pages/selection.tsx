@@ -8,10 +8,11 @@ import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { Musician } from "@/interfaces/musician";
 import { Instrument } from "@/interfaces/instrument";
+
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 
-const baseUrl = publicRuntimeConfig.baseUrl;
+const baseUrl = publicRuntimeConfig.basePath;
 
 const useStyles = makeStyles(() => ({
   container: {
