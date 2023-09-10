@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import navyLogo from "../../public/assets/images/USNavy-Band-Logo.png";
 import { Typography } from "@mui/material";
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
+
+const baseUrl = publicRuntimeConfig.baseUrl;
 
 export default function Assignments() {
   return (
