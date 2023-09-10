@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+          <link rel="shortcut icon" href="drum-roulette/assets/images/favicon.ico" />
         </Head>
         <body>
           <Main />
