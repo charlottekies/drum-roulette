@@ -6,14 +6,14 @@ declare module "@mui/styles/defaultTheme" {
   interface DefaultTheme extends Theme {}
 }
 
-const inter = Inter({
-  subsets: ["latin"],
-});
+// const inter = Inter({
+//   subsets: ["latin"],
+// });
 
 export const theme: Theme = createTheme({
-  typography: {
-    fontFamily: inter.style.fontFamily,
-  },
+  // typography: {
+  //   fontFamily:
+  // },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
