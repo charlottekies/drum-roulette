@@ -6,6 +6,7 @@ const nextConfig = {
     domains: ["server.pickyourdrum.link"],
     unoptimized: true,
   },
+  future: { webpack5: true },
 };
 
 module.exports = nextConfig;
