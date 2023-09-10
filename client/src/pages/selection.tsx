@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { shuffle } from "lodash";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -77,13 +76,15 @@ export default function Selection() {
 
   const [loading, setLoading] = useState(true);
   const [musicians, setMusicians] = useState<Musician[]>([]);
+  const [isSelected, setIsSelected] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://server.pickyourdrum.link/users"
+          //when we have more branches, we could move this url elsewhere for cleaner code
+          `https://fryxz3d12d.execute-api.us-east-1.amazonaws.com/production/musicians/navy`
         );
-        setMusicians(response.data);
+        setMusicians(response.data.musicians);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -96,6 +97,21 @@ export default function Selection() {
   const selectedEqual =
     instruments.filter((instrument) => instrument.selected).length ===
     musicians.filter((name) => name.selected).length;
+
+  useEffect(() => {
+    const selectedInstrumentsCount = instruments.filter(
+      (instrument) => instrument.selected
+    ).length;
+    const selectedMusiciansCount = musicians.filter(
+      (musician) => musician.selected
+    ).length;
+
+    // Check if at least two instruments and two musicians are selected
+    const isSelected =
+      selectedInstrumentsCount >= 2 && selectedMusiciansCount >= 2;
+
+    setIsSelected(isSelected);
+  }, [instruments, musicians]);
 
   const handleClickMusician = (item: Musician) => {
     const nextMusician = musicians.map((musician) => {
@@ -209,8 +225,8 @@ export default function Selection() {
             },
           });
         }}
-        disabled={!selectedEqual}
-        type={'button'}
+        disabled={!isSelected || !selectedEqual}
+        type={"button"}
       >
         Give me assignments!
       </Button>
