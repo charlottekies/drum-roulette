@@ -19,13 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Cache .next folder
-        uses: actions/cache@v2
-        with:
-          path: client/.next
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('client/.next', 'client/package-lock.json', 'client/yarn.lock') }}
-          restore-keys: | 
-            ${{ runner.os }}-nextjs-
+      # - name: Cache .next folder
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: client/.next
+      #     key: ${{ runner.os }}-nextjs-${{ hashFiles('client/.next', 'client/package-lock.json', 'client/yarn.lock') }}
+      #     restore-keys: | 
+      #       ${{ runner.os }}-nextjs-
 
       - name: Checkout
         uses: actions/checkout@v2
