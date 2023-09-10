@@ -202,7 +202,7 @@ export default function Selection() {
             (instrument) => instrument.selected
           );
           router.push({
-            pathname: '/selection',
+            pathname: '/assignments',
             query: {
               musicians: JSON.stringify(selectedMusicians),
               instruments: JSON.stringify(selectedInstruments),
