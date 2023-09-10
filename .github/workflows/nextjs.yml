@@ -43,7 +43,8 @@ jobs:
 
 
       - name: Install Project Dependencies with Yarn
-        run: cd client && yarn install --frozen-lockfile
+        # run: cd client && yarn install --frozen-lockfile
+        run: cd client && yarn install --force
 
       - name: Debug package.json
         run: cat client/package.json
