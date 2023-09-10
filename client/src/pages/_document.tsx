@@ -8,7 +8,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="drum-roulette/assets/images/favicon.ico" />
+          <link
+            rel="shortcut icon"
+            href="drum-roulette/assets/images/favicon.ico"
+          />
 
           {/* Configurations to make site to appear like an app when pinned to phone home screen */}
 
@@ -29,7 +32,6 @@ export default class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="Drum Roulette" />
 
           {/* Colors the status bar (battery, wifi, data) white */}
-         
         </Head>
         <body>
           <Main />
