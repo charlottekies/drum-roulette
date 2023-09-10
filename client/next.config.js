@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["server.pickyourdrum.link"],
+    unoptimized: true
   },
 };
 
