@@ -9,11 +9,6 @@ import axios from "axios";
 import { Musician } from "@/interfaces/musician";
 import { Instrument } from "@/interfaces/instrument";
 
-import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
-
-const baseUrl = publicRuntimeConfig.basePath;
-
 const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
@@ -207,7 +202,7 @@ export default function Selection() {
             (instrument) => instrument.selected
           );
           router.push({
-            pathname: `${baseUrl}/selection`,
+            pathname: '/selection',
             query: {
               musicians: JSON.stringify(selectedMusicians),
               instruments: JSON.stringify(selectedInstruments),
